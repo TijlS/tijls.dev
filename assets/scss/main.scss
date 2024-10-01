@@ -1,0 +1,95 @@
+@use "./utilities/variables";
+@use "./utilities/animations";
+@use "./buttons";
+@use "./inputs";
+@use "./tables";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "slnt" 0;
+}
+
+/* Heading */
+h1,h2,h3,h4 {
+    color: black;
+    line-height: 1.1em;
+    letter-spacing: -0.045em
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 30px;
+    font-variation-settings: 'wght' 900
+}
+
+h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
+    font-variation-settings: 'wght' 900
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-variation-settings: "wght" 800
+}
+
+h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-variation-settings: "wght" 600
+}
+
+p {
+    line-height: 1.4
+}
+
+.subtext {
+    color: variables.$subtext;
+    line-height: 1.4em;
+    font-size: 15px
+}
+
+.subtext.subtext--l {
+    font-size: 16px
+}
+
+.subtext.subtext--s {
+    font-size: 14px
+}
+
+.small-text {
+    font-size: 12px;
+    color: variables.$subtext;
+    line-height: 1.4;
+    text-align: center
+}
+
+.container{
+    padding: 0 5rem;
+}
+
+.card{
+    box-shadow: variables.$box_shadow;
+    padding: 2em 3em;
+    background-color: #fff;
+}
+
+.bg1{
+    background-image: url(/bg1.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+hr{
+    border: none;
+    border-top: 1px solid variables.$subtext;
+}

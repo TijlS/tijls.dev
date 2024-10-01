@@ -1,0 +1,98 @@
+$primary: #28483B;
+$secondary: #f29645;
+$tertiary: #B8AFE4;
+
+$accent1: #dcf3ce;
+$accent2: #9ad09a;
+
+$text_dark: #112a46;
+$subtext: #7d7c83;
+$text_white: #fff;
+
+$success_dark: #388e3c;
+$success_main: #14A44D;
+$success_light: #81c784;
+
+$error_dark: #d32f2f;
+$error_main: #DC4C64;
+$error_light: #e57373;
+
+$info_dark: #0288d1;
+$info_main: #54B4D3;
+$info_light: #4fc3f7;
+
+$warning_dark: #f57c00;
+$warning_main: #E4A11B;
+$warning_light: #ffb74d;
+
+$border_radius: 7.5px;
+$cubic: cubic-bezier(0.4, 0, 0.2, 1);
+$box_shadow: 0 6px 24px -1px rgb(81 96 114 / 30%);
+$box_shadow_light: 0 6px 24px -1px rgb(81 96 114 / 15%);
+
+$colors: (
+	"primary": $primary,
+	"secondary": $secondary,
+	"tertiary": $tertiary,
+	"accent1": $accent1,
+	"accent2": $accent2,
+	"error": $error_main,
+	"success": $success_main,
+	"warning": $warning_main,
+	"info": $info_main
+);
+
+:root {
+	--border_radius: #{$border_radius};
+	--cubic: #{$cubic};
+	--box_shadow: #{$box_shadow};
+	--box_shadow_light: #{$box_shadow_light};
+
+	--primary: #{$primary};
+	--secondary: #{$secondary};
+	--tertiary: #{$tertiary};
+
+	--accent1: #{$accent1};
+	--accent2: #{$accent2};
+
+	--text_dark: #{$text_dark};
+	--subtext: #{$subtext};
+	--text_white: #{$text_white};
+
+	--success_dark: #{$success_dark};
+	--success_main: #{$success_main};
+	--success_light: #{$success_light};
+
+	--error_dark: #{$error_dark};
+	--error_main: #{$error_main};
+	--error_light: #{$error_light};
+
+	--info_dark: #{$info_dark};
+	--info_main: #{$info_main};
+	--info_light: #{$info_light};
+
+	--warning_dark: #{$warning_dark};
+	--warning_main: #{$warning_main};
+	--warning_light: #{$warning_light};
+}
+
+@each $name, $color in $colors {
+	.text-#{$name} {
+		color: $color;
+	}
+	.text-accent-#{$name} {
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 5%;
+			z-index: -1;
+
+			width: 100%;
+			height: 40%;
+
+			background-color: lighten($color, 10);
+		}
+	}
+}

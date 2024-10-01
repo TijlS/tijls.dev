@@ -1,0 +1,103 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["omitApi"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum PlanType {
+  CUSTOM
+  GENERAL
+}
+
+enum PlanPaymentType {
+  MONTHLY
+  YEARLY
+  VARIABLE
+}
+
+enum InvoiceStatus {
+  CREATED
+  SENT
+  PAYED
+  REFUNDED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  NO_STATUS
+  PAYMENT_SUCCESS
+  PAYMENT_FAILED
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String
+  password String @db.Text
+
+  firstName String
+  lastName  String
+  fullName  String
+  address   String?
+  phone     String?
+
+  roles     Json
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  plans     Plan[]
+  invoices  Invoice[]
+}
+
+model RefreshToken {
+  id          String @id @default(uuid())
+  token       String @db.Text
+  accessToken String @db.Text
+  user        Json
+}
+
+model Plan {
+  id          String          @id @default(uuid())
+  name        String
+  description String
+  price       Int
+  visible     Boolean
+  type        PlanType
+  paymentType PlanPaymentType
+  stripeId    String
+
+  user       User[]
+  categories Category[]
+}
+
+model Category {
+  id          String @id @default(uuid())
+  name        String
+  description String
+  color       String
+  icon        String
+
+  plans    Plan[]
+  invoices Invoice[]
+}
+
+model Invoice {
+  id            String        @id @default(uuid())
+  name          String
+  description   String
+  price         Int
+  stripeId      String
+  invoiceStatus InvoiceStatus @default(CREATED)
+  paymentStatus PaymentStatus @default(NO_STATUS)
+
+  categories Category[]
+  users      User[]
+}

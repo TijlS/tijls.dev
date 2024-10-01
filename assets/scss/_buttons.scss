@@ -1,0 +1,131 @@
+@use "./utilities/variables";
+
+.btn {
+	--bg: #fff;
+	--border: #fff;
+	--color: #000;
+
+	&.btn-primary {
+		--bg: #{variables.$primary};
+		--border: #{variables.$primary};
+		--color: #{variables.$text_white};
+	}
+	&.btn-secondary {
+		--bg: #{variables.$secondary};
+		--border: #{variables.$secondary};
+	}
+	&.btn-tertiary {
+		--bg: #{variables.$tertiary};
+		--border: #{variables.$tertiary};
+	}
+	&.btn-accent1 {
+		--bg: #{variables.$accent1};
+		--border: #{variables.$accent1};
+	}
+	&.btn-success {
+		--bg: #{variables.$success_main};
+		--border: #{variables.$success_main};
+		--color: #{variables.$text_white};
+	}
+	&.btn-error {
+		--bg: #{variables.$error_main};
+		--border: #{variables.$error_main};
+		--color: #{variables.$text_white};
+	}
+	&.btn-info {
+		--bg: #{variables.$info_main};
+		--border: #{variables.$info_main};
+		--color: #{variables.$text_white};
+	}
+	&.btn-warning {
+		--bg: #{variables.$warning_main};
+		--border: #{variables.$warning_main};
+		--color: #{variables.$text_white};
+	}
+	&.btn-accent2 {
+		--bg: #{variables.$accent2};
+		--border: #{variables.$accent2};
+	}
+
+	&.btn-outline {
+		&.btn-primary {
+			--bg: #fff;
+			--border: #{variables.$primary};
+			--color: #{variables.$primary};
+		}
+		&.btn-secondary {
+			--bg: #fff;
+			--border: #{variables.$secondary};
+			--color: #{variables.$secondary};
+		}
+		&.btn-tertiary {
+			--bg: #fff;
+			--border: #{variables.$tertiary};
+			--color: #{variables.$tertiary};
+		}
+		&.btn-accent1 {
+			--bg: #fff;
+			--border: #{variables.$accent1};
+			--color: #000;
+		}
+		&.btn-accent2 {
+			--bg: #fff;
+			--border: #{variables.$accent2};
+			--color: #000;
+		}
+		&.btn-success {
+			--bg: #fff;
+			--border: #{variables.$success_main};
+			--color: #000;
+		}
+		&.btn-error {
+			--bg: #fff;
+			--border: #{variables.$error_main};
+			--color: #000;
+		}
+		&.btn-info {
+			--bg: #fff;
+			--border: #{variables.$info_main};
+			--color: #000;
+		}
+		&.btn-warning {
+			--bg: #fff;
+			--border: #{variables.$warning_main};
+			--color: #000;
+		}
+	}
+
+	&.btn-icon{
+		padding: .75rem;
+
+		i{
+			font-size: 1rem;
+			color: var(--color) !important;
+		}
+	}
+
+	& {
+		padding: .75rem 1.5rem;
+		cursor: pointer;
+	
+		background-color: var(--bg);
+		border: 3px solid var(--border);
+		color: var(--color) !important;
+		font-family: "Inter", sans-serif;
+		font-optical-sizing: auto;
+		font-variation-settings: "slnt" 0;
+		font-weight: bold;
+	
+		transition: box-shadow 0.25s ease, background-color 0.25s ease;
+	}
+
+	&.btn-fw{
+		width: 100%;
+	}
+
+
+	&:hover,
+	&:active {
+		box-shadow: 0 0 0 1.5px var(--border);
+	}
+}
